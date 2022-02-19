@@ -1,38 +1,30 @@
 <template>
   <v-app id="inspire">
-    <v-app-bar app color="white" flat>
-      <v-container class="py-0 fill-height">
+    <Header/>
 
-        <v-btn to="/" text>Home</v-btn>
-
-        <v-responsive> </v-responsive>
-      </v-container>
-    </v-app-bar>
-
-    <v-main class="grey lighten-3">
+    <v-main>
       <v-container>
-        <v-row>
-          <v-col>
-            <v-sheet min-height="70vh" rounded="lg">
-              <router-view></router-view>
-            </v-sheet>
-          </v-col>
-        </v-row>
+        <v-sheet min-height="70vh" rounded="lg">
+          <router-view></router-view>
+        </v-sheet>
       </v-container>
     </v-main>
   </v-app>
 </template>
 
 <script>
-export default{
-  name: "App",
+  import Header from '@/components/Header.vue'
 
-  components: {
-  },
+  export default {
+    name: "App",
 
-  data: () => ({
-  }),
-};
+    components: {
+      Header
+    },
+
+    data: () => ({
+    }),
+  };
 </script>
 <style>
 </style>
