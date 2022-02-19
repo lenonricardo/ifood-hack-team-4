@@ -2,7 +2,8 @@
   <div>
     <v-card
       class="card"
-      max-width="374"
+      max-width="258"
+      max-with="313"
       rounded
       elevation="10"
     >
@@ -20,26 +21,25 @@
       </v-card-title>
 
       <v-img
-        height="250"
+        max-height="168"
         src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
       ></v-img>
 
-      <v-card-title class="card-title pb-0">
-        <span>Price: {{ price }}</span>
+      <v-card-title class="pb-0 ">
+        <span class="price">Price: {{ price }}</span>
       </v-card-title>
 
       <div class="card-desc">
-        <v-card-text>
+        <v-card-text class="pt-1">
           {{ desc }}
         </v-card-text>
 
         <v-card-actions>
           <v-btn
-            color="red"
-            class="mb-0 mr-2 text-capitalize"
+            color="#EA1D2C"
+            class="mb-1 mr-2 text-capitalize"
             depressed
             dark
-            rounded
             @click="reserve"
           >
             Cook
@@ -90,18 +90,31 @@
 </script>
 
 <style lang="sass" scoped>
-  .card-title
+  .display-flex
     display: flex
     flex-direction: row
     justify-content: space-between
+
+  .card-title
+    @extend .display-flex
     color: #303030
+    max-height: 33px
+    align-items: center
+    padding: 0px 15px 0px 15px
+
+  .card-title span
+    font-size: 12px
 
   .card-desc
-    @extend .card-title
+    @extend .display-flex
     align-items: flex-end
     margin-bottom: 10px
 
+  .card-desc div
+    font-size: 11px
+
   .card
     border-radius: 18px !important
-    margin: 54px
+    margin-right: 32px
+    margin-bottom: 54px
 </style>
