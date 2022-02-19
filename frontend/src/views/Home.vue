@@ -19,18 +19,18 @@
       </div>
     </div>
     <div class="cards">
-      <Card v-for="card in cards"/>
+      <RecipeCard v-for="card in cards"/>
     </div>
   </div>
 </template>
 
 <script>
-import Card from '@/components/Card.vue'
+import RecipeCard from '@/components/pages/RecipeCard.vue'
 
 export default {
   name: 'Home',
   components: {
-    Card
+    RecipeCard
   },
 
   data: () => ({

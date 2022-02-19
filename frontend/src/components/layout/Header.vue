@@ -8,7 +8,7 @@
       <v-spacer></v-spacer>
       <div class="right-items">
         <router-link to="/home" tag="span" class="menu-options" exact >about us</router-link>
-        <router-link to="/home" tag="span" class="menu-options ml-5" exact > cart <v-icon size="15">mdi-cart</v-icon></router-link>
+        <router-link to="/home" tag="span" class="menu-options ml-5" exact > cart <v-icon color="#303030" size="15">mdi-cart</v-icon></router-link>
       </div>
 
       <v-responsive> </v-responsive>
