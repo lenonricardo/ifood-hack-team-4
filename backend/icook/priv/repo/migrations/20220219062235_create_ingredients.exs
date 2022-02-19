@@ -5,6 +5,7 @@ defmodule Icook.Repo.Migrations.CreateIngredients do
     create table(:ingredients) do
       add :title, :string, size: 200, null: false
       add :image, :string, size: 200, null: false
+      add :price, :float, null: false
 
       timestamps()
     end

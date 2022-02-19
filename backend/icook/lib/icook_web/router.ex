@@ -10,6 +10,7 @@ defmodule IcookWeb.Router do
 
     resources "/recipes", RecipeController, except: [:new, :edit]
     resources "/ingredients", IngredientController, except: [:new, :edit]
+    resources "/markets", MarketController, except: [:new, :edit]
   end
 
   # Enables LiveDashboard only for development
