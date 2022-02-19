@@ -5,10 +5,10 @@
       <span class="instruction">Select a recipe and we deliver the ingredients</span>
       <div class="inputs">
         <div class="mt-10">
-          <v-chip v-for="chip in chips" class="chip" @click="search">{{chip}}</v-chip>
+          <v-chip outlined color="#303030" v-for="chip in chips" class="chip" @click="search">{{chip}}</v-chip>
         </div>
         <div class="options mt-10">
-          <v-btn dark class="text-capitalize mr-4">Create your recipe</v-btn>
+          <v-btn height="40" dark class="text-capitalize mr-4">Create your recipe</v-btn>
           <v-text-field
             dense
             label="Search"
@@ -35,6 +35,10 @@ export default {
 
   data: () => ({
     cards: [
+      { desc: 'card 1', price: '22', title: 'hehe', label: 'label'},
+      { desc: 'card 1', price: '22', title: 'hehe', label: 'label'},
+      { desc: 'card 1', price: '22', title: 'hehe', label: 'label'},
+      { desc: 'card 1', price: '22', title: 'hehe', label: 'label'},
       { desc: 'card 1', price: '22', title: 'hehe', label: 'label'},
       { desc: 'card 1', price: '22', title: 'hehe', label: 'label'},
       { desc: 'card 1', price: '22', title: 'hehe', label: 'label'},
@@ -84,7 +88,7 @@ export default {
 
   .options
     display: flex
-    align-items: center
+    align-items: flex-start
 
   .v-text-field__details
     display: none !important

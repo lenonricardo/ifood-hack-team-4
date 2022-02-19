@@ -2,15 +2,10 @@
   <div class="text-center">
     <v-dialog
       v-model="dialog"
-      width="500"
+      width="800"
     >
       <v-card>
-        <v-card-title class="text-h5 grey lighten-2">
-          Header
-        </v-card-title>
-
-        <slot>
-        </slot>
+        <slot/>
 
         <v-card-actions>
           <v-spacer></v-spacer>

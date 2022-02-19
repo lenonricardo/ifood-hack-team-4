@@ -47,17 +47,26 @@
         </v-card-actions>
       </div>
     </v-card>
-    <Dialog :dialog="dialog" @close="dialog = false"/>
+    <Dialog :dialog="dialog" @close="dialog = false">
+      <slot>
+        <div class="stepper">
+          <Stepper :step="step"/>
+        </div>
+      </slot>
+    </Dialog>
   </div>
 </template>
+
 <script>
   import Dialog from '@/components/Dialog.vue'
+  import Stepper from '@/components/Stepper.vue'
 
   export default {
     name: 'Card',
 
     components: {
-      Dialog
+      Dialog,
+      Stepper
     },
 
     props: {
@@ -78,7 +87,8 @@
     data: () => ({
       loading: false,
       selection: 1,
-      dialog: false
+      dialog: false,
+      step: 1
     }),
 
     methods: {
@@ -117,4 +127,8 @@
     border-radius: 18px !important
     margin-right: 32px
     margin-bottom: 54px
+
+  .stepper
+    display: flex
+    justify-content: center
 </style>
