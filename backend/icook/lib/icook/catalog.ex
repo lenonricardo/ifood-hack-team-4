@@ -306,4 +306,11 @@ defmodule Icook.Catalog do
   def change_market(%Market{} = market, attrs \\ %{}) do
     Market.changeset(market, attrs)
   end
+
+  def list_recipes_by_label(label) do
+    Recipe
+    |> Repo.all()
+    |> Repo.preload(ingredients: [:markets])
+    |> Enum.filter(fn r -> r.label == label end)
+  end
 end
