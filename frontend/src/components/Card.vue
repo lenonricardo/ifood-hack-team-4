@@ -35,7 +35,7 @@
 
         <v-card-actions>
           <v-btn
-            color="#303030"
+            color="red"
             class="mb-0 mr-2 text-capitalize"
             depressed
             dark
@@ -90,13 +90,10 @@
 </script>
 
 <style lang="sass" scoped>
-  @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap')
-
   .card-title
     display: flex
     flex-direction: row
     justify-content: space-between
-    font-family: Poppins
     color: #303030
 
   .card-desc
