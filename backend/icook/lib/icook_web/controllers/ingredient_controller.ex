@@ -6,6 +6,9 @@ defmodule IcookWeb.IngredientController do
 
   action_fallback IcookWeb.FallbackController
 
+  @not_found_error {:error, :not_found}
+  @invalid_value_error {:error, :unprocessable_entity}
+
   def index(conn, _params) do
     ingredients = Catalog.list_ingredients()
     render(conn, "index.json", ingredients: ingredients)
@@ -23,14 +26,21 @@ defmodule IcookWeb.IngredientController do
   def show(conn, %{"id" => id}) do
     ingredient = Catalog.get_ingredient!(id)
     render(conn, "show.json", ingredient: ingredient)
+  rescue
+    Ecto.NoResultsError -> @not_found_error
+    Ecto.Query.CastError -> @invalid_value_error
   end
 
   def update(conn, %{"id" => id, "ingredient" => ingredient_params}) do
     ingredient = Catalog.get_ingredient!(id)
 
-    with {:ok, %Ingredient{} = ingredient} <- Catalog.update_ingredient(ingredient, ingredient_params) do
+    with {:ok, %Ingredient{} = ingredient} <-
+           Catalog.update_ingredient(ingredient, ingredient_params) do
       render(conn, "show.json", ingredient: ingredient)
     end
+  rescue
+    Ecto.NoResultsError -> @not_found_error
+    Ecto.Query.CastError -> @invalid_value_error
   end
 
   def delete(conn, %{"id" => id}) do
@@ -39,5 +49,8 @@ defmodule IcookWeb.IngredientController do
     with {:ok, %Ingredient{}} <- Catalog.delete_ingredient(ingredient) do
       send_resp(conn, :no_content, "")
     end
+  rescue
+    Ecto.NoResultsError -> @not_found_error
+    Ecto.Query.CastError -> @invalid_value_error
   end
 end

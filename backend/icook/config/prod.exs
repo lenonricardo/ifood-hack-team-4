@@ -10,12 +10,12 @@ import Config
 # which you should run after static files are built and
 # before starting your production server.
 config :icook, IcookWeb.Endpoint,
-  url: [scheme: "https", host: "icookhack.herokuapp.com", port: 443],
+  url: [scheme: "https", host: "salty-thicket-33074.herokuapp.com", port: 443],
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
   cache_static_manifest: "priv/static/cache_manifest.json",
   secret_key_base: System.get_env("SECRET_KEY_BASE")
 
-config :clarx, Clarx.Repo,
+config :icook, Icook.Repo,
   adapter: Ecto.Adapter.Postgres,
   url: System.get_env("DATABASE_URL"),
   pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),

@@ -15,9 +15,9 @@ defmodule IcookWeb.FallbackController do
   end
 
   # This clause is an example of how to handle resources that cannot be found.
-  def call(conn, {:error, :not_found}) do
+  def call(conn, {:error, status}) do
     conn
-    |> put_status(:not_found)
+    |> put_status(status)
     |> put_view(IcookWeb.ErrorView)
     |> render(:"404")
   end
