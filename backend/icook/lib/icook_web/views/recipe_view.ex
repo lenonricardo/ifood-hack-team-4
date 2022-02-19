@@ -1,6 +1,7 @@
 defmodule IcookWeb.RecipeView do
   use IcookWeb, :view
   alias IcookWeb.RecipeView
+  alias IcookWeb.IngredientView
 
   def render("index.json", %{recipes: recipes}) do
     %{data: render_many(recipes, RecipeView, "recipe.json")}
@@ -16,7 +17,8 @@ defmodule IcookWeb.RecipeView do
       title: recipe.title,
       description: recipe.description,
       image: recipe.image,
-      label: recipe.label
+      label: recipe.label,
+      ingredients: render_many(recipe.ingredients, IngredientView, "ingredient.json")
     }
   end
 end

@@ -8,7 +8,8 @@ defmodule IcookWeb.Router do
   scope "/api", IcookWeb do
     pipe_through(:api)
 
-    resources("/recipes", RecipeController, except: [:new, :edit])
+    resources "/recipes", RecipeController, except: [:new, :edit]
+    resources "/ingredients", IngredientController, except: [:new, :edit]
   end
 
   # Enables LiveDashboard only for development
