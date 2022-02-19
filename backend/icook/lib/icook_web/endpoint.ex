@@ -7,7 +7,7 @@ defmodule IcookWeb.Endpoint do
   @session_options [
     store: :cookie,
     key: "_icook_key",
-    signing_salt: "/T6IdbyN"
+    signing_salt: "lT0fjOmX"
   ]
 
   socket "/live", Phoenix.LiveView.Socket, websocket: [connect_info: [session: @session_options]]
