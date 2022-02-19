@@ -7,14 +7,6 @@
       rounded
       elevation="10"
     >
-      <template slot="progress">
-        <v-progress-linear
-          color="deep-purple"
-          height="10"
-          indeterminate
-        ></v-progress-linear>
-      </template>
-
       <v-card-title class="card-title">
         <span>{{ title }}</span>
         <span>{{ label }}</span>
@@ -47,26 +39,18 @@
         </v-card-actions>
       </div>
     </v-card>
-    <Dialog :dialog="dialog" @close="dialog = false">
-      <slot>
-        <div class="stepper">
-          <Stepper :step="step"/>
-        </div>
-      </slot>
-    </Dialog>
+    <RecipeDetail :dialog="dialog" @close="dialog = false"/>
   </div>
 </template>
 
 <script>
-  import Dialog from '@/components/Dialog.vue'
-  import Stepper from '@/components/Stepper.vue'
+  import RecipeDetail from '@/components/pages/RecipeDetail.vue'
 
   export default {
-    name: 'Card',
+    name: 'RecipeCard',
 
     components: {
-      Dialog,
-      Stepper
+      RecipeDetail
     },
 
     props: {
@@ -127,8 +111,4 @@
     border-radius: 18px !important
     margin-right: 32px
     margin-bottom: 54px
-
-  .stepper
-    display: flex
-    justify-content: center
 </style>
