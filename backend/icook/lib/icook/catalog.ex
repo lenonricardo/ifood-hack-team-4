@@ -311,11 +311,11 @@ defmodule Icook.Catalog do
     Recipe
     |> Repo.all()
     |> Repo.preload(ingredients: [:markets])
-    |> Enum.filter(fn r -> r.label == label end)
+    |> Enum.filter(fn r -> String.downcase(r.label) == String.downcase(label) end)
   end
 
   def search_recipe_by_term(term) do
-    t = "%#{term}%"
+    t = "%#{String.downcase(term)}%"
 
     query =
       from r in Recipe,
@@ -323,7 +323,7 @@ defmodule Icook.Catalog do
         on: ri.recipe_id == r.id,
         join: i in Ingredient,
         on: ri.ingredient_id == i.id,
-        where: like(i.title, ^t),
+        where: like(fragment("lower(?)", i.title), ^t),
         select: r
 
     Repo.all(query)
