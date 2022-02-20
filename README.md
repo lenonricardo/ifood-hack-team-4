@@ -25,11 +25,8 @@ O desafio do Hack iFood 3° edição:
  ## Iniciando o projeto
 
 1. Clone esse repositório em sua máquina: ```$ git clone https://github.com/lenonricardo/ifood-hack-team-4.git```
-2. Rode o comando npx sequelize-cli db:seed:all no terminal do VSCode
-3. Digite npm start no terminal do seu VSCode para rodar a API
-4. Depois disso, clone o projeto Plataforma Amassa! em: https://github.com/lenonricardo/ifood-hack-team-4
-5. Rode o comando ```npm i - f``` no terminal do VSCode
-6. Rode o comando ```npm start```
+2. Para o back-end, as instruções de configuração do servidor estão disponíveis [aqui](https://github.com/lenonricardo/ifood-hack-team-4/tree/main/backend/icook#readme)
+3. Para o front-end, basta instalar as dependencias rodando o comando ```npm i``` e iniciar com ```vue-cli-service serve``` no terminal
  
 ## Tecnologias utilizadas
 * [Trello](https://trello.com/b/U2dBBrS9/hackfood) - Ferramenta de organização em tarefas.
