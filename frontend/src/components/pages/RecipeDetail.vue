@@ -161,14 +161,10 @@
     data: () => ({
       step: 1,
       ingredients: [
-        {title: 'Carrot', price: 2.99, checked: true},
-        {title: 'Noodle', price: 2.99, checked: true},
-        {title: 'Mushroom', price: 2.99, checked: true},
-        {title: 'Chicken', price: 2.99, checked: true},
-        {title: 'Rice', price: 2.99, checked: true},
+        {title: '', price: 0, checked: true},
       ],
       markets: [
-        {title: 'Cavalin', image: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/190326-spicy-salmon-bowl-horizontal-1556024100.png?crop=0.669xw:1.00xh;0.0308xw,0&resize=640:*"}
+        {title: '', image: ""}
       ],
       check: true,
       market: {},
