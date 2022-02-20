@@ -257,6 +257,7 @@
     height: 305px
     object-fit: cover
     align-self: center
+    border-radius: 18px
 
   .user-time
     display: flex

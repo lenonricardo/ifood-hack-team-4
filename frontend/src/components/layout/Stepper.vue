@@ -10,7 +10,7 @@
         Checkout
       </v-stepper-step>
 
-      <v-divider></v-divider>
+      <v-divider/>
 
       <v-stepper-step
         editable
