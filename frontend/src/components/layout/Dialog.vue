@@ -1,21 +1,15 @@
 <template>
   <div class="text-center">
     <v-dialog
-      v-model="dialog"
-      width="800"
+      v-model="internalDialog"
+      width="850"
+      @click:outside="$emit('close')"
     >
-      <v-card>
-        <slot/>
-
+      <v-card class="card">
+        <slot name="content"/>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn
-            color="primary"
-            text
-            @click="$emit('close')"
-          >
-            Close
-          </v-btn>
+          <slot name="footer"/>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -31,12 +25,25 @@
       }
     },
 
+    computed: {
+      internalDialog: {
+        get: function () {
+          return this.dialog
+        },
+        set: function(value) {
+          this.$emit('update:dialog', value)
+        }
+      }
+    },
+
     data: () => ({
       loading: false,
       selection: 1,
-    }),
-
-    methods: {
-    },
+    })
   }
 </script>
+
+<style lang="sass" scoped>
+  .card
+    padding: 20px
+</style>

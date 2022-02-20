@@ -2,21 +2,22 @@
   <v-stepper v-model="internalStep">
     <v-stepper-header>
       <v-stepper-step
-        editable
+        :disabled="internalStep === '2'"
+        :editable="internalStep === '1'"
         step="1"
         color="#303030"
       >
         Checkout
       </v-stepper-step>
 
-      <v-divider></v-divider>
+      <v-divider/>
 
       <v-stepper-step
         editable
         step="2"
         color="#303030"
       >
-        Complete
+        Quase lá
       </v-stepper-step>
     </v-stepper-header>
     </v-stepper>
@@ -41,7 +42,7 @@
           return this.step
         },
         set: function(value) {
-          this.$emit('input', value)
+          this.$emit('update:step', value)
         }
       }
     },
