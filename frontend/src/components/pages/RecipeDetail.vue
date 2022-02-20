@@ -17,7 +17,7 @@
           </div>
           <div :class="isMobile ? 'container-details mobile' : 'container-details'">
             <div :class="isMobile ? 'recipe-detail mobile' : 'recipe-detail'">
-              <span>Super Meal</span>
+              <span>{{recipe.title}}</span>
               <div class="user-time">
                 <div>
                   <v-icon>mdi-account</v-icon>
@@ -25,11 +25,11 @@
                 </div>
                 <span>30 min</span>
               </div>
-              <v-img class="recipe-img" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/190326-spicy-salmon-bowl-horizontal-1556024100.png?crop=0.669xw:1.00xh;0.0308xw,0&resize=640:*"></v-img>
+              <v-img class="recipe-img" :src="recipe.image"></v-img>
             </div>
             <div :class="!isMobile ? 'ingredients': 'ingredients-mobile'">
-              <span>Nunc iaculis viverra metus vitae pretium. Fusce sed tellus eros. Ut sapien risus, luctus quis aliquam a, commodo ut sapien. Praesent a augue sem.</span>
-              <p class="ingredients-title">Check the ingredients: </p>
+              <span>{{recipe.description}}</span>
+              <p class="ingredients-title">Confira os ingredientes: </p>
               <div :class="isMobile ? 'ingredients-check-mobile' : 'ingredients-check'" v-for="ingredient in ingredients">
                 <v-checkbox
                   v-model="ingredient.checked"
@@ -59,17 +59,17 @@
                 @click:close="remove(data.item)"
               >
                 <v-avatar left>
-                  <v-img :src="data.item.image"></v-img>
+                  <v-img :src="data.item.logo"></v-img>
                 </v-avatar>
-                {{ data.item.title }}
+                {{ data.item.name }}
               </v-chip>
             </template>
             <template v-slot:item="data">
                 <v-list-item-avatar>
-                  <img :src="data.item.image">
+                  <img :src="data.item.logo">
                 </v-list-item-avatar>
                 <v-list-item-content>
-                  <v-list-item-title v-html="data.item.title"></v-list-item-title>
+                  <v-list-item-title v-html="data.item.name"></v-list-item-title>
                 </v-list-item-content>
             </template>
           </v-autocomplete>
@@ -124,6 +124,10 @@
       dialog: {
         required: true,
         default: false
+      },
+
+      recipe: {
+        required: true
       }
     },
 
@@ -135,6 +139,21 @@
           setTimeout(() => {
             this.showFirstIcon = false
           }, 2000)
+        }
+      },
+
+      dialog(value) {
+        if (value) {
+          this.ingredients = this.recipe.ingredients
+          this.setIngredientsAsChecked()
+
+          let markets = []
+          this.ingredients.forEach(ingredient => {
+            console.log(ingredient.markets)
+            markets = markets.concat(ingredient.markets)
+          })
+
+          this.markets = markets
         }
       }
     },
@@ -314,7 +333,7 @@
     margin: 20px
 
   .ingredients-check
-    width: 45%
+    width: 80%
     display: flex
     align-items: center
     justify-content: space-between

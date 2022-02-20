@@ -3,27 +3,28 @@
     <v-card
       class="card"
       max-width="258"
-      max-with="313"
+      height="350"
       rounded
       elevation="10"
     >
       <v-card-title class="card-title">
-        <span>{{ title }}</span>
-        <span>{{ label }}</span>
+        <span>{{ card.title }}</span>
+        <span>{{ card.label }}</span>
       </v-card-title>
 
       <v-img
         max-height="168"
-        src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+        class="card-image"
+        :src="card.image"
       ></v-img>
 
       <v-card-title class="pb-0 ">
-        <span class="price">Price: {{ price }}</span>
+        <span class="price">Pedido: R${{ total }}</span>
       </v-card-title>
 
       <div class="card-desc">
         <v-card-text class="pt-1">
-          {{ desc }}
+          {{ card.description }}
         </v-card-text>
 
         <v-card-actions>
@@ -39,7 +40,11 @@
         </v-card-actions>
       </div>
     </v-card>
-    <RecipeDetail :dialog="dialog" @close="dialog = false"/>
+    <RecipeDetail
+      :recipe="card"
+      :dialog="dialog"
+      @close="dialog = false"
+    />
   </div>
 </template>
 
@@ -54,17 +59,14 @@
     },
 
     props: {
-      title: {
-        default: 'Super meal',
-      },
-      label: {
-        default: 'Low carb',
-      },
-      desc: {
-        default: 'Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.'
-      },
-      price: {
-        default: '29,99'
+      card: {
+        description: "",
+        id: "",
+        image: "",
+        label: "",
+        title: "",
+        price: "",
+        ingredients: []
       }
     },
 
@@ -74,6 +76,12 @@
       dialog: false,
       step: 1
     }),
+
+    computed: {
+      total() {
+        return (this.card.ingredients.reduce((a, b) => ({price: a.price + b.price})).price).toFixed(2)
+      }
+    },
 
     methods: {
       reserve () {
@@ -103,6 +111,7 @@
     @extend .display-flex
     align-items: flex-end
     margin-bottom: 10px
+    height: 100px
 
   .card-desc div
     font-size: 11px
@@ -111,4 +120,9 @@
     border-radius: 18px !important
     margin-right: 32px
     margin-bottom: 54px
+
+  .card-image
+    width: 258px
+    height: 168px
+    object-fit: cover
 </style>

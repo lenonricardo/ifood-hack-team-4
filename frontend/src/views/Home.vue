@@ -11,13 +11,14 @@
           width="200"
           append-icon="mdi-magnify"
           :class="!isMobile ? 'search-input' : ''"
+          @input="search"
         />
 
         <v-chip v-if="!isMobile" outlined color="#303030" v-for="chip in chips" class="chip" @click="search">{{chip}}</v-chip>
       </div>
     </div>
     <div :class="cardsClass">
-      <RecipeCard v-for="card in cards"/>
+      <RecipeCard v-for="card in filteredCards" :card="card"/>
     </div>
   </div>
 </template>
@@ -33,27 +34,23 @@ export default {
   },
 
   data: () => ({
-    cards: [
-      { desc: 'card 1', price: '22', title: 'hehe', label: 'label'},
-      { desc: 'card 1', price: '22', title: 'hehe', label: 'label'},
-      { desc: 'card 1', price: '22', title: 'hehe', label: 'label'},
-      { desc: 'card 1', price: '22', title: 'hehe', label: 'label'},
-      { desc: 'card 1', price: '22', title: 'hehe', label: 'label'},
-      { desc: 'card 1', price: '22', title: 'hehe', label: 'label'},
-      { desc: 'card 1', price: '22', title: 'hehe', label: 'label'},
-      { desc: 'card 1', price: '22', title: 'hehe', label: 'label'},
-      { desc: 'card 1', price: '22', title: 'hehe', label: 'label'},
-      { desc: 'card 1', price: '22', title: 'hehe', label: 'label'},
-    ],
+    filteredCards: [],
+    cards: [],
     chips: ['Low carb', 'Vegano', 'Cozinha fácil', 'Doces'],
     selection: 1,
     chipSelected: false
   }),
 
   async created() {
-    const { data } = await Recipes.list()
-    console.log(data)
+    const data = Recipes.getRecipes()
+
+    if (!data) {
+      const { data } = await Recipes.list()
+    }
+
     this.cards = data
+
+    this.filteredCards = [...this.cards]
   },
 
   computed: {
@@ -73,8 +70,20 @@ export default {
   },
 
   methods: {
-    search() {
-      this.chipSelected = true
+    search(value) {
+      if (value === '') {
+        this.filteredCards = [...this.cards]
+        return
+      }
+
+      const filter = value.split(',')
+      const recipes = this.cards.filter(
+        card => card.ingredients.find(
+          ingredient => filter.some(el => ingredient.title.includes(el))
+        )
+      )
+
+      this.filteredCards = recipes
     }
   }
 }
