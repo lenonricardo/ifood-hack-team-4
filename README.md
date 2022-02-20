@@ -26,7 +26,7 @@ O desafio do Hack iFood 3° edição:
 
 1. Clone esse repositório em sua máquina: ```$ git clone https://github.com/lenonricardo/ifood-hack-team-4.git```
 2. Para o back-end, as instruções de configuração do servidor estão disponíveis [aqui](https://github.com/lenonricardo/ifood-hack-team-4/tree/main/backend/icook#readme)
-3. Para o front-end, basta instalar as dependencias rodando o comando ```npm i``` e iniciar com ```vue-cli-service serve``` no terminal
+3. Para o front-end, basta instalar as dependencias rodando o comando ```npm i``` e iniciar com ```npm run serve``` no terminal
  
 ## Tecnologias utilizadas
 * [Trello](https://trello.com/b/U2dBBrS9/hackfood) - Ferramenta de organização em tarefas.
