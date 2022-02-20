@@ -2,13 +2,13 @@
   <v-app-bar color="white" flat height="128">
       <v-container class="py-0 fill-height">
       <v-toolbar-title>
-        <router-link to="/" exact tag="span" class="logo">iC<span class="logo-detail">oo</span>k</router-link>
+        <router-link to="/" exact class="logo"><img width="86" height="44" src="../../assets/logo.svg" ></router-link>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-spacer></v-spacer>
-      <div class="right-items">
-        <router-link to="/home" tag="span" class="menu-options" exact >about us</router-link>
-        <router-link to="/home" tag="span" class="menu-options ml-5" exact > cart <v-icon color="#303030" size="15">mdi-cart</v-icon></router-link>
+      <div v-if="!isMobile" class="right-items">
+        <router-link to="/" tag="span" class="menu-options" exact >sobre nós</router-link>
+        <router-link to="/" tag="span" class="menu-options ml-5" exact > carrinho <v-icon color="#303030" size="15">mdi-cart</v-icon></router-link>
       </div>
 
       <v-responsive> </v-responsive>
@@ -19,14 +19,10 @@
   export default {
     name: 'Dialog',
 
-    props: {
-
-    },
-
-    data: () => ({
-    }),
-
-    methods: {
+    computed: {
+      isMobile() {
+        return this.$vuetify.breakpoint.xs || this.$vuetify.breakpoint.sm || this.$vuetify.breakpoint.md
+      }
     }
   }
 </script>

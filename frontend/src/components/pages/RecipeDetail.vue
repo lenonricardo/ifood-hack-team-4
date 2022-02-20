@@ -7,16 +7,16 @@
   >
     <template v-slot:content>
       <div v-if="step === 1">
-        <div class="stepper">
+        <div v-if="!isMobile" class="stepper">
           <Stepper :step="step" @update:step="step = $event"/>
         </div>
-        <v-container class="container">
-          <div class="checkout-price">
+        <v-container :class="isMobile ? 'container-mobile' : 'container'">
+          <div :class="isMobile ? 'checkout-price mobile' : 'checkout-price'">
             <span class="checkout">Checkout</span>
             <span>Pedido: R${{total}}</span>
           </div>
-          <div class="container-details">
-            <div class="recipe-detail">
+          <div :class="isMobile ? 'container-details mobile' : 'container-details'">
+            <div :class="isMobile ? 'recipe-detail mobile' : 'recipe-detail'">
               <span>Super Meal</span>
               <div class="user-time">
                 <div>
@@ -27,10 +27,10 @@
               </div>
               <v-img class="recipe-img" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/190326-spicy-salmon-bowl-horizontal-1556024100.png?crop=0.669xw:1.00xh;0.0308xw,0&resize=640:*"></v-img>
             </div>
-            <div class="ingredients">
+            <div :class="!isMobile ? 'ingredients': 'ingredients-mobile'">
               <span>Nunc iaculis viverra metus vitae pretium. Fusce sed tellus eros. Ut sapien risus, luctus quis aliquam a, commodo ut sapien. Praesent a augue sem.</span>
               <p class="ingredients-title">Check the ingredients: </p>
-              <div class="ingredients-check" v-for="ingredient in ingredients">
+              <div :class="isMobile ? 'ingredients-check-mobile' : 'ingredients-check'" v-for="ingredient in ingredients">
                 <v-checkbox
                   v-model="ingredient.checked"
                   class="checkbox"
@@ -175,6 +175,10 @@
         }
 
         return 0
+      },
+
+      isMobile() {
+        return this.$vuetify.breakpoint.xs || this.$vuetify.breakpoint.sm
       }
     },
 
@@ -233,6 +237,9 @@
   .container
     padding:0px 50px
 
+  .container-mobile
+    padding: unset
+
   .container-details
     display: flex
     margin-bottom: 20px
@@ -266,6 +273,9 @@
   .ingredients
     margin-top: 40px
     margin-left: 40px
+
+  .ingredients-mobile
+    margin-top: 40px
 
   .ingredients-title
     font-size: 18px
@@ -308,4 +318,15 @@
     display: flex
     align-items: center
     justify-content: space-between
+
+  .ingredients-check-mobile
+    display: flex
+    align-items: center
+    justify-content: space-between
+
+
+  .mobile
+    flex-direction: column
+    width: 100%
+    padding:0px
 </style>
