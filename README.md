@@ -36,6 +36,10 @@ O desafio do Hack iFood 3° edição:
 * [Vue](https://sequelize.org/) - Sequelize é um ORM(Object-Relational Mapper) para NodeJs baseado em promise, utilizado para os bancos de dados: Postgres
 * [Postgress](https://www.postgresql.org/) -sistema de gerenciamento de banco de dados, que utiliza a linguagem SQL como interface. 
 
+## Deploy
+* [Frontend](https://icook-blush.vercel.app/)
+* [Backend](https://salty-thicket-33074.herokuapp.com/api/)
+
 ## Desenvolvido por:
 
 🚀 **Matheus Germano** - *Product* - [GitHub](https://github.com/matgermano) e [Linkedin](https://www.linkedin.com/in/matheusgermanodesouza/)
