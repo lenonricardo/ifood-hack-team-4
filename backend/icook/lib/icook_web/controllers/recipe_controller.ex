@@ -9,6 +9,19 @@ defmodule IcookWeb.RecipeController do
   @not_found_error {:error, :not_found}
   @invalid_value_error {:error, :unprocessable_entity}
 
+  def index(conn, %{"label" => label}) do
+    recipes = Catalog.list_recipes_by_label(label)
+    render(conn, "index.json", recipes: recipes)
+  end
+
+  def index(conn, %{"term" => term}) do
+    recipes = Catalog.search_recipe_by_term(term)
+
+    conn
+    |> put_view(IcookWeb.RecipeView)
+    |> render("index.json", recipes: recipes)
+  end
+
   def index(conn, _params) do
     recipes = Catalog.list_recipes()
     render(conn, "index.json", recipes: recipes)

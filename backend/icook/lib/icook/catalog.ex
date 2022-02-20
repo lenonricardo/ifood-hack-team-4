@@ -5,7 +5,7 @@ defmodule Icook.Catalog do
 
   import Ecto.Query, warn: false
   alias Icook.Repo
-
+  alias Icook.Catalog.RecipesIngredients
   alias Icook.Catalog.Recipe
 
   @doc """
@@ -305,5 +305,28 @@ defmodule Icook.Catalog do
   """
   def change_market(%Market{} = market, attrs \\ %{}) do
     Market.changeset(market, attrs)
+  end
+
+  def list_recipes_by_label(label) do
+    Recipe
+    |> Repo.all()
+    |> Repo.preload(ingredients: [:markets])
+    |> Enum.filter(fn r -> String.downcase(r.label) == String.downcase(label) end)
+  end
+
+  def search_recipe_by_term(term) do
+    t = "%#{String.downcase(term)}%"
+
+    query =
+      from r in Recipe,
+        join: ri in RecipesIngredients,
+        on: ri.recipe_id == r.id,
+        join: i in Ingredient,
+        on: ri.ingredient_id == i.id,
+        where: like(fragment("lower(?)", i.title), ^t),
+        select: r
+
+    Repo.all(query)
+    |> Repo.preload(ingredients: [:markets])
   end
 end
