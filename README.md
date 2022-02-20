@@ -42,7 +42,7 @@ O desafio do Hack iFood 3° edição:
 
 💻 **Lenon Ricardo** - *Front-end* - [Github](https://github.com/lenonricardo) e [linkedin](https://www.linkedin.com/in/lenon-ricardo-mendes-9325b2154/)
 
-💻 **Tiago Oliveira** - *Front-end* - [Github](https://github.com/olvrti) e [Linkedin](https://www.linkedin.com/in/olvrti/)
+💻 **Tiago Oliveira** - *Backend* - [Github](https://github.com/olvrti) e [Linkedin](https://www.linkedin.com/in/olvrti/)
 
 🗺️**Matheus Santos** - *UX Designer* - [Github](https://github.com/FawkesSt) e [Linkedin](https://www.linkedin.com/in/matheus-corp-santos/)
 
