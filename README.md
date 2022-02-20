@@ -32,13 +32,9 @@ O desafio do Hack iFood 3° edição:
 * [Trello](https://trello.com/b/U2dBBrS9/hackfood) - Ferramenta de organização em tarefas.
 * [Miro](https://miro.com/welcomeonboard/S0JvNkNrczZrNFdLT01FNFdZNW9jRmZOdFZFYTdNVDcwcUtraVpJNnJBZUpGOFhValVsM2d4c0huWDlRTTJubHwzMDc0NDU3MzYzMjEwODU5Nzc5?invite_link_id=410980138994) - Ferramenta de Brainstorm e ideação.
 * [Figma](https://www.figma.com/) - Design UX-UI.
-* [Elixir](https://elixir-lang.org/getting-started/introduction.html) - Linguagem utilizada no Back-end.
-* [Vue](https://sequelize.org/) - Sequelize é um ORM(Object-Relational Mapper) para NodeJs baseado em promise, utilizado para os bancos de dados: Postgres
-* [Postgress](https://www.postgresql.org/) -sistema de gerenciamento de banco de dados, que utiliza a linguagem SQL como interface. 
-
-## Deploy
-* [Frontend](https://icook-blush.vercel.app/)
-* [Backend](https://salty-thicket-33074.herokuapp.com/api/)
+* [Elixir](https://elixir-lang.org/getting-started/introduction.html) - Linguagem utilizada no Back-end juntamente com o framework [Phoenix](https://www.phoenixframework.org/).
+* [Vue](https://vuejs.org/) - Framework JavaScript de código-aberto, focado no desenvolvimento de interfaces de usuário e aplicativos de página única
+* [Postgress](https://www.postgresql.org/) - Sistema de gerenciamento de banco de dados, que utiliza a linguagem SQL como interface. 
 
 ## Desenvolvido por:
 
