@@ -10,7 +10,7 @@ import VueAxios from 'vue-axios'
 Vue.config.productionTip = false
 Vue.use(VueAxios, axios)
 
-axios.defaults.baseURL = "http://localhost:8080/api/library"
+axios.defaults.baseURL = "https://salty-thicket-33074.herokuapp.com/api/"
 
 new Vue({
   router,

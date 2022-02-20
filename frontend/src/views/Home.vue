@@ -24,6 +24,7 @@
 
 <script>
 import RecipeCard from '@/components/pages/RecipeCard.vue'
+import Recipes from '@/service/recipes'
 
 export default {
   name: 'Home',
@@ -49,7 +50,14 @@ export default {
     chipSelected: false
   }),
 
+  async created() {
+    const { data } = await Recipes.list()
+    console.log(data)
+    this.cards = data
+  },
+
   computed: {
+
     chipColor() {
       return this.chipSelected ? 'black' : ''
     },
