@@ -14,7 +14,16 @@
           @input="search"
         />
 
-        <v-chip v-if="!isMobile" outlined color="#303030" v-for="chip in chips" class="chip" @click="search">{{chip}}</v-chip>
+        <v-chip
+          v-for="chip in chips"
+          v-if="!isMobile"
+          outlined
+          color="#303030"
+          class="chip"
+          @click="searchByLabel(chip)"
+        >
+          {{chip}}
+        </v-chip>
       </div>
     </div>
     <div :class="cardsClass">
@@ -36,7 +45,7 @@ export default {
   data: () => ({
     filteredCards: [],
     cards: [],
-    chips: ['Low carb', 'Vegano', 'Cozinha fácil', 'Doces'],
+    chips: ['Todos', 'Família', 'Vegano', 'Cozinha fácil', 'Doces'],
     selection: 1,
     chipSelected: false
   }),
@@ -84,6 +93,14 @@ export default {
       )
 
       this.filteredCards = recipes
+    },
+
+    searchByLabel(value) {
+      if (value === 'Todos') {
+        this.filteredCards = this.cards
+      } else {
+        this.filteredCards = this.cards.filter(card => card.label === value)
+      }
     }
   }
 }
