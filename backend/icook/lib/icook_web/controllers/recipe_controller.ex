@@ -14,6 +14,14 @@ defmodule IcookWeb.RecipeController do
     render(conn, "index.json", recipes: recipes)
   end
 
+  def index(conn, %{"term" => term}) do
+    recipes = Catalog.search_recipe_by_term(term)
+
+    conn
+    |> put_view(IcookWeb.RecipeView)
+    |> render("index.json", recipes: recipes)
+  end
+
   def index(conn, _params) do
     recipes = Catalog.list_recipes()
     render(conn, "index.json", recipes: recipes)
